@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130508105954) do
+ActiveRecord::Schema.define(version: 20130508110308) do
 
   create_table "cocktails", force: true do |t|
     t.string   "name"
@@ -32,6 +32,9 @@ ActiveRecord::Schema.define(version: 20130508105954) do
     t.boolean  "is_brand"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "ancestry"
   end
+
+  add_index "spirits", ["ancestry"], name: "index_spirits_on_ancestry"
 
 end
