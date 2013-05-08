@@ -2,7 +2,13 @@
 
 FactoryGirl.define do
   factory :spirit do
-    name "MyString"
+    name "Gin"
     is_brand false
+
+    factory :child_spirit do
+      name 'Plymouth Gin'
+      is_brand true
+      parent { create(:spirit) }
+    end
   end
 end
