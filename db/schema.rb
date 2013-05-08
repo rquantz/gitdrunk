@@ -11,11 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130508104329) do
+ActiveRecord::Schema.define(version: 20130508105954) do
 
   create_table "cocktails", force: true do |t|
     t.string   "name"
     t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "recipes", force: true do |t|
+    t.integer  "cocktail_id"
+    t.text     "tasting_notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "spirits", force: true do |t|
+    t.string   "name"
+    t.boolean  "is_brand"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
