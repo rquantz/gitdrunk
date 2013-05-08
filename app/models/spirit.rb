@@ -1,4 +1,6 @@
 class Spirit < ActiveRecord::Base
+  has_many :ingredients
+  has_many :recipes, through: :ingredients
   has_ancestry
 
   validates :name, presence: true
