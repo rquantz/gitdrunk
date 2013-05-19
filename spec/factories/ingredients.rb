@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :ingredient do
-    recipe_id 1
-    spirit_id 1
+    recipe
+    spirit
     amount "MyString"
   end
 end

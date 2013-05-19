@@ -3,6 +3,15 @@
 FactoryGirl.define do
   factory :recipe do
     cocktail_id 1
-    tasting_notes "MyText"
+    tasting_notes "Delicious"
+    
+    factory :recipe_with_ingredients do
+      after(:build) do |recipe|
+        ['Gin', 'Vermouth'].each do |name|
+          spirit = FactoryGirl.create(:spirit, name: name)
+          FactoryGirl.create(:ingredient, amount: '1 oz', recipe: recipe, spirit: spirit)
+        end
+      end
+    end
   end
 end
