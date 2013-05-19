@@ -1,5 +1,6 @@
 class Bar < ActiveRecord::Base
-  has_and_belongs_to_many :spirits, after_remove: :remove_ancestors
+  has_many :bottles
+  has_many :spirits, through: :bottles, after_remove: :remove_ancestors
   
   before_save :add_ancestors
 
