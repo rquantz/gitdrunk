@@ -1,5 +1,6 @@
 require 'spec_helper'
 
 describe Ingredient do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'is not valid without an amount'
+  it 'is not valid without a spirit'
 end

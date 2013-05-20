@@ -44,6 +44,7 @@ group :test do
   gem 'launchy'
 end
 
+gem 'devise', '~> 3.0.0.rc'
 gem 'haml-rails'
 
 gem 'ancestry', git: 'https://github.com/stefankroes/ancestry.git'

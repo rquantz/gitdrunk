@@ -3,6 +3,14 @@ class Bar < ActiveRecord::Base
   has_many :spirits, through: :bottles, after_remove: :remove_ancestors
   
   before_save :add_ancestors
+  
+  def can_make?(recipe)
+    (recipe.spirits & spirits).count == recipe.spirits.count
+  end
+  
+  def recipes
+    Recipe.all.select { |recipe| can_make?(recipe) }
+  end
 
   private
     def add_ancestors
