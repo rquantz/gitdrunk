@@ -3,10 +3,28 @@ class SpiritsController < ApplicationController
   
   def index
     @spirits = Spirit.all
+    respond_with(@spirits)
   end
   
-  def edit
+  def new
     
+  end
+
+  def create
+    @spirit = Spirit.new(spirit_params)
+    respond_to do |format|
+      if @spirit.save
+        format.html { redirect_to spirits_url }
+        format.json { render json: @spirit.to_json }
+      else
+        format.html { render :new }
+        format.json { render json: @spirit.to_json }
+      end
+    end
+  end
+
+  def edit
+    @spirit = Spirit.find(params[:id])
   end
   
   def update

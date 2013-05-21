@@ -10,5 +10,9 @@ FactoryGirl.define do
       is_brand true
       parent { create(:spirit) }
     end
+    
+    factory :invalid_spirit do
+      name nil
+    end
   end
 end

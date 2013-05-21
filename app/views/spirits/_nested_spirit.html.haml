@@ -1,6 +1,4 @@
-%li
-  = spirit.name
+%li.js-draggable-spirit.spirit-list{'data-spirit-id' => spirit.id}
+  %span.js-droppable-spirit= spirit.name
   |
   = link_to 'Edit', edit_spirit_url(spirit)
-  |
-  = link_to 'View', spirit_url(spirit)
