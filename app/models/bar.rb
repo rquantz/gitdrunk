@@ -1,4 +1,5 @@
 class Bar < ActiveRecord::Base
+  belongs_to :user
   has_many :bottles
   has_many :spirits, through: :bottles, after_remove: :remove_ancestors
   

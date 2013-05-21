@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130520173425) do
+ActiveRecord::Schema.define(version: 20130520192756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,10 @@ ActiveRecord::Schema.define(version: 20130520173425) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "bars", ["user_id"], name: "index_bars_on_user_id", using: :btree
 
   create_table "bottles", force: true do |t|
     t.integer "bar_id"
