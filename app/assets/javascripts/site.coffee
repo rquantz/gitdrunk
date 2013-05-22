@@ -3,6 +3,7 @@
   $.fn.clear_form = ->
     @find('input[type="text"]').val('')
     @find('input[type="checkbox"]').attr('checked', false)
+    @find('input[name="spirit[name]"]').focus()
     this
 
   render_spirit = (spirit) ->
@@ -68,7 +69,6 @@
 
   $(->
                      
-    $('form').submit(false)
     $('.nested-spirits').not('.brand-spirit').each ->
       parent_id = $(this).data('parent-id')
       render_spirit_form(parent_id).prependTo(this)          
