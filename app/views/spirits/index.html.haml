@@ -1,4 +1,13 @@
 %h1 Spirits
 
+%h2 Curating the list
+%ul
+  %li Spirits can either be a category (e.g., Cognac) or a specific brand of liquor (e.g., Martell V.S.O.P Cognac). If it is a brand please indicate when you are entering the spirit by checking the "brand?" checkbox.
+  %li The spirit name should be able to stand alone in a list of ingredients, so include any parts of its category that are necessary. So the category name should be "Blanco Tequila," not just "Blanco," and brands within that category should be, for instance, "Partida Blanco Tequila."
+  %li All names should be singular ("Gin," not "Gins").
+  %li We strive to have a category for every degree of liquor abstraction that might appear in a recipe. So obviously we have a category for Triple Sec, but also Brandy-Based Triple Sec (like Gran Gala or Grand Marnier) and Neutral-Spirit Triple Sec (like Cointreau or Luxardo). The rums could use a lot of help in that arena.
+  %li You can move a spirit (and all its children) from one category to another by dragging it onto the category you want to move it to until you see a box around the target category.
+  %li You can change the name of a spirit or whether it is considered a brand by clicking "Edit."
+
 %ul.nested-spirits.children-of-spirit-
   = nested_spirits @spirits.arrange(order: :name)
