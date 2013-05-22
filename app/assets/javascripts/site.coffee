@@ -11,7 +11,7 @@
       | <a href='/spirits/#{spirit['id']}/edit'>Edit</a>
       </li>")
       
-  render_spirit_form = (parent_id) ->
+  render_spirit_form = (parent_id='') ->
     $("<li><form method='POST' action='/spirits'>
          <input type='text' name='spirit[name]' />
          <input type='hidden' name='spirit[parent_id]' value='#{parent_id}' />
@@ -71,7 +71,7 @@
     $('form').submit(false)
     $('.nested-spirits').not('.brand-spirit').each ->
       parent_id = $(this).data('parent-id')
-      render_spirit_form(parent_id).appendTo(this)          
+      render_spirit_form(parent_id).prependTo(this)          
     $('.js-draggable-spirit').draggable(revert: 'invalid')
     $('.js-draggable-spirit').droppable(droppable_prefs)
 
