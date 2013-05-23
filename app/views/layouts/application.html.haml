@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+%html
+  %head
+    %title Cocktails
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+    
+  %body
+    %header
+      %nav.main_nav
+        %ul
+          %li Cocktails
+          %li= link_to 'Sign Out', destroy_user_session_url, method: :delete
+          %li= "Welcome, #{current_user.email}" if current_user
+  
+    = yield
