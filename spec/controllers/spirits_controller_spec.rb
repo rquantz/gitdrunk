@@ -1,6 +1,33 @@
 require 'spec_helper'
 
 describe SpiritsController do
+  before :each do
+    sign_in :user, create(:user)
+  end
+
+  describe 'guest user access' do
+    before :each do
+      sign_out :user
+    end
+    it 'GET #edit requires login' do
+      get :edit, id: create(:spirit)
+      expect(response).to redirect_to new_user_session_url
+    end
+    it 'GET #index requires login' do
+      get :index
+      expect(response).to redirect_to new_user_session_url
+    end
+    it 'POST #create requires login' do
+      post :create, spirit: attributes_for(:spirit)
+      expect(response).to redirect_to new_user_session_url
+    end
+    it 'PUT #update requires login' do
+      spirit = create(:spirit)
+      put :update, id: spirit, spirit: attributes_for(:spirit, name: 'New Name')
+      expect(response).to redirect_to new_user_session_url
+    end
+  end
+
   describe 'GET #index' do
     it 'populates an array of spirits' do
       spirit = create(:spirit)
