@@ -13,13 +13,15 @@
       </li>")
       
   render_spirit_form = (parent_id='') ->
-    $("<li><form method='POST' action='/spirits'>
-         <input type='text' name='spirit[name]' />
+    $("<li><form method='POST' action='/spirits' class='form-inline spirit-create'>
+         <input class='input-small spirit-create__text' type='text' name='spirit[name]' />
          <input type='hidden' name='spirit[parent_id]' value='#{parent_id}' />
          <input type='hidden' name='spirit[is_brand]' value='0' />
-         <input type='checkbox' name='spirit[is_brand]' value='1' />
-         <label for='spirit[is_brand]'>brand?</label>
-         <input type='submit' value='Create' />
+         <label class='checkbox' for='spirit[is_brand]'>
+           <input class='checkbox' type='checkbox' name='spirit[is_brand]' value='1' />
+           brand?
+         </label>
+         <input class='btn btn-mini' type='submit' value='Create' />
        </form></li>").find('form').submit(->
         $.ajax
           url: '/spirits'

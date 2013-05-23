@@ -7,11 +7,15 @@
     = csrf_meta_tags
     
   %body
-    %header
-      %nav.main_nav
-        %ul
-          %li Cocktails
-          %li= link_to 'Sign Out', destroy_user_session_url, method: :delete
-          %li= "Welcome, #{current_user.email}" if current_user
+    .container
+      %header.navbar.navbar-fixed-top
+        %nav.navbar-inner
+          .container
+            %ul.nav
+              %li.brand Cocktails
+              %li= link_to 'Sign Out', destroy_user_session_url, method: :delete
+              %li 
+                %a= "Welcome, #{current_user.email}" if current_user
   
-    = yield
+    .container
+      = yield

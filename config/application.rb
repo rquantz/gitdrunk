@@ -30,5 +30,7 @@ module Cocktails
         request_specs: false
       g.fixture_replacement :factory_girl, dir: 'spec/factories'
     end
+    
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
   end
 end
