@@ -57,6 +57,9 @@ gem 'haml-rails'
 
 gem 'ancestry', git: 'https://github.com/stefankroes/ancestry.git'
 
+gem 'thinking-sphinx', '~> 3.0.2', require: 'thinking_sphinx'
+gem 'mysql2'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -9,6 +9,10 @@ describe SpiritsController do
     before :each do
       sign_out :user
     end
+    it 'GET #show requires login' do
+      get :show, id: create(:spirit)
+      expect(response).to redirect_to new_user_session_url
+    end
     it 'GET #edit requires login' do
       get :edit, id: create(:spirit)
       expect(response).to redirect_to new_user_session_url
