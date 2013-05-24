@@ -76,6 +76,17 @@
       render_spirit_form(parent_id).prependTo(this)          
     $('.js-draggable-spirit').draggable(revert: 'invalid')
     $('.js-draggable-spirit').droppable(droppable_prefs)
+    $('.spirit-search input[type="text"]').typeahead
+      source: (query, process) ->
+        $.ajax
+          url: "/spirits/search/#{query}"
+          type: 'GET'
+          dataType: 'json'
+          success: (json) ->
+            names = []
+            $.each json, ->
+              names.push @name
+            return process names
 
   )
   

@@ -42,6 +42,11 @@ class SpiritsController < ApplicationController
     end
   end
   
+  def search
+    @spirits = Spirit.search params[:search]
+    respond_with @spirits
+  end
+
   private
     def spirit_params
       params.require(:spirit).permit(:name, :parent_id, :is_brand)
