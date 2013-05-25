@@ -1,2 +1,6 @@
 development:
     min_prefix_len: 2
+        
+production:
+    min_prefix_len: 2
+
