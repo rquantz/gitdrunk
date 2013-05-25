@@ -18,6 +18,9 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
+gem 'thinking-sphinx', '~> 3.0.2', require: 'thinking_sphinx'
+gem 'mysql2', '~> 0.3.12b4'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -43,6 +46,7 @@ end
 group :production do
   gem 'rails_log_stdout',           github: 'heroku/rails_log_stdout'
   gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
+  gem 'flying-sphinx',   '1.0.0'
 end
 
 group :test do
@@ -57,8 +61,7 @@ gem 'haml-rails'
 
 gem 'ancestry', git: 'https://github.com/stefankroes/ancestry.git'
 
-gem 'thinking-sphinx', '~> 3.0.2', require: 'thinking_sphinx'
-gem 'mysql2', '~> 0.3.12b4'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
