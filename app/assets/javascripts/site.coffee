@@ -10,11 +10,12 @@
     $("<li class='js-draggable-spirit spirit-list #{'brand-spirit' if spirit['is_brand']}' data-spirit-id='#{spirit['id']}'>
       #{spirit['name']}
       | <a href='/spirits/#{spirit['id']}/edit'>Edit</a>
+      | <a data-confirm='Are you sure you want to permanently delete #{spirit['name']}' data-method='delete' href='http://localhost:3000/spirits/#{spirit['id']}' rel='nofollow'>Destroy</a>
       </li>")
       
   render_spirit_form = (parent_id='') ->
     $("<li><form method='POST' action='/spirits' class='form-inline spirit-create'>
-         <input class='input-small spirit-create__text' type='text' name='spirit[name]' />
+         <input class='input-small spirit-create__text' type='text' name='spirit[name]' placeholder='Add a spirit' />
          <input type='hidden' name='spirit[parent_id]' value='#{parent_id}' />
          <input type='hidden' name='spirit[is_brand]' value='0' />
          <label class='checkbox' for='spirit[is_brand]'>

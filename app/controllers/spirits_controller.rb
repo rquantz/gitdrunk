@@ -7,6 +7,10 @@ class SpiritsController < ApplicationController
     respond_with(@spirits)
   end
   
+  def show
+    @spirit = Spirit.find(params[:id])
+  end
+  
   def new
     
   end
@@ -40,6 +44,12 @@ class SpiritsController < ApplicationController
         format.json { render json: @spirit.to_json }
       end
     end
+  end
+  
+  def destroy
+    @spirit = Spirit.find(params[:id])
+    @spirit.destroy
+    redirect_to spirits_url
   end
   
   def search

@@ -44,6 +44,20 @@ describe SpiritsController do
     end
   end
   
+  describe 'GET #show' do
+    before :each do
+      @spirit = create(:spirit)
+    end
+    it 'finds the spirit' do
+      get :show, id: @spirit
+      expect(assigns(:spirit)).to eq @spirit
+    end
+    it 'renders the :show view' do
+      get :show, id: @spirit
+      expect(response).to render_template :show
+    end
+  end
+  
   describe 'GET #edit' do
     before :each do
       @spirit = create(:spirit)
@@ -134,6 +148,21 @@ describe SpiritsController do
         put :update, id: @spirit, spirit: attributes_for(:spirit), format: :json
         expect(response.body).to have_content @spirit.to_json
       end
+    end
+  end
+  
+  describe 'DELETE #destroy' do
+    before :each do
+      @spirit = create(:spirit)
+    end
+    it 'deletes the message' do
+      expect {
+        delete :destroy, id: @spirit
+      }.to change(Spirit, :count).by(-1)
+    end
+    it 'redirects to spirits#index' do
+      delete :destroy, id: @spirit
+      expect(response).to redirect_to spirits_url
     end
   end
 end
