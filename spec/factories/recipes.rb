@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :recipe do
-    cocktail_id 1
+    cocktail { create(:cocktail) }
     tasting_notes "Delicious"
     
     factory :recipe_with_ingredients do

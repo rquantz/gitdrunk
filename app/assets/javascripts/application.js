@@ -16,4 +16,6 @@
 //= require jquery-ui-1.10.3.custom.min
 //= require bootstrap
 //= require_tree ./templates
+//= require underscore-min
+//= require backbone-min
 //= require site.js

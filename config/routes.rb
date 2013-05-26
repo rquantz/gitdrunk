@@ -51,4 +51,6 @@ Cocktails::Application.routes.draw do
   root to: 'spirits#index'
   get 'spirits/search/:search' => 'spirits#search'
   resources :spirits
+  
+  resources :cocktails
 end

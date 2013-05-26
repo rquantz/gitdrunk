@@ -1,0 +1,17 @@
+= form_for @cocktail do |f|
+  - if @cocktail.errors.any?
+    .alert.alert-block
+      %button.close{type: 'button', 'data-dismiss' => 'alert'} &times;
+      %h4= "#{pluralize(@cocktail.errors.count, "error")} prohibited this cocktail from being saved:"
+      %ul
+        - @cocktail.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    .field
+      = f.label :name
+      = f.text_field :name, class: 'span4'
+    .field
+      = f.label :description
+      = f.text_area :description, class: 'span8', rows: 10 
+    = f.submit 'Save', class: 'btn'

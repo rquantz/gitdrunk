@@ -15,6 +15,7 @@
               %li.brand Cocktails
               %li= link_to 'Sign Out', destroy_user_session_url, method: :delete
               %li= link_to 'Spirits', spirits_url
+              %li= link_to 'Cocktails', cocktails_url
             %ul.nav.pull-right
               %li 
                 %a= "Welcome, #{current_user.email}" if current_user
