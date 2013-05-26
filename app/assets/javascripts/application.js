@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require jquery-ui-1.10.3.custom.min
 //= require bootstrap
+//= require_tree ./templates
 //= require site.js
