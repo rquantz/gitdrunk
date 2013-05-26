@@ -1,4 +1,5 @@
-%h1 Cocktails
+.page-header
+  %h1 Cocktails
 
 %table.table
   %tr
@@ -11,7 +12,7 @@
   - @cocktails.each do |cocktail|
     %tr
       %td= cocktail.name
-      %td= truncate cocktail.description, length: 70
+      %td= truncate cocktail.description, length: 90
       %td= link_to 'Show', cocktail
       %td= link_to 'Edit', edit_cocktail_path(cocktail)
       %td= link_to 'Destroy', cocktail, :method => :delete, :data => { :confirm => 'Are you sure?' }
