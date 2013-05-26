@@ -17,6 +17,8 @@ gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
+gem 'haml_coffee_assets'
+gem 'execjs'
 
 gem 'thinking-sphinx', '~> 3.0.2', require: 'thinking_sphinx'
 gem 'mysql2', '~> 0.3.12b4'
