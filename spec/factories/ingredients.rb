@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :ingredient do
-    recipe
-    spirit
-    amount "MyString"
+    recipe { create(:recipe) }
+    spirit { create(:spirit) }
+    amount "1 oz"
   end
 end
