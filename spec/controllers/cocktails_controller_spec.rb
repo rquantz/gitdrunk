@@ -23,7 +23,7 @@ describe CocktailsController do
   # This should return the minimal set of attributes required to create a valid
   # Cocktail. As you add validations to Cocktail, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { {  } }
+  let(:valid_attributes) { { name: 'Sazerac' } }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -106,8 +106,8 @@ describe CocktailsController do
         # specifies that the Cocktail created on the previous line
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
-        Cocktail.any_instance.should_receive(:update).with({ "these" => "params" })
-        put :update, {:id => cocktail.to_param, :cocktail => { "these" => "params" }}, valid_session
+        Cocktail.any_instance.should_receive(:update).with({ "name" => "This name" })
+        put :update, {:id => cocktail.to_param, :cocktail => { "name" => "This name" }}, valid_session
       end
 
       it "assigns the requested cocktail as @cocktail" do

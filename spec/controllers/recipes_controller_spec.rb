@@ -119,7 +119,7 @@ describe RecipesController do
     
     it 'returns json' do
       delete :destroy, id: @recipe, format: :json
-      expect(response.body).to have_content(@recipe.to_json)
+      expect(response.body).to have_content({}.to_json)
     end
   end
 

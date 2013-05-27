@@ -28,7 +28,8 @@ class RecipesController < ApplicationController
 
   # DELETE /recipes/1
   def destroy
-    respond_with @recipe.destroy
+    @recipe.destroy
+    render json: {}.to_json, status: :ok
   end
 
   private
