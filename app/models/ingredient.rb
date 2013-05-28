@@ -9,4 +9,8 @@ class Ingredient < ActiveRecord::Base
   def spirit_name
     spirit.name
   end
+  
+  def as_json(options={})
+    super(options.merge({methods: :spirit_name}))
+  end
 end

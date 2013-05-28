@@ -91,7 +91,6 @@ describe RecipesController do
       
       it 'returns json' do
         put :update, id: @recipe, recipe: attributes_for(:recipe), format: :json
-        puts @recipe.to_json
         expect(response.body).to have_content(@recipe.to_json)
       end
     end

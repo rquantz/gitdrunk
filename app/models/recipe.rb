@@ -6,6 +6,6 @@ class Recipe < ActiveRecord::Base
   validates :cocktail, presence: true
   
   def as_json(options={})
-    super(options.merge({include: :ingredients}))
+    super(options.merge(include: {ingredients: {methods: :spirit_name}}))
   end
 end

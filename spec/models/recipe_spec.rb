@@ -10,6 +10,6 @@ describe Recipe do
   it "includes its ingredients when converted to json" do
     ingredient = create(:ingredient)
     recipe = create(:recipe, ingredients: [ingredient])
-    expect(recipe.to_json).to match(ingredient.to_json)
+    expect(recipe.to_json).to include(recipe.ingredients.to_json)
   end
 end
