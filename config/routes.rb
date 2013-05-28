@@ -55,4 +55,6 @@ Cocktails::Application.routes.draw do
   resources :cocktails
   
   resources :recipes, except: [:new, :edit]
+  
+  resources :ingredients
 end

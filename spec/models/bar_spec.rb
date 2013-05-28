@@ -36,8 +36,13 @@ describe Bar do
     before do
       @spirits_in_bar = create_list(:spirit, 3)
       @spirit_outside_bar = create(:spirit, name: 'Exotic Liquor')
-      @recipe_in_bar = create(:recipe, spirits: @spirits_in_bar)
-      @recipe_outside_bar = create(:recipe, spirits: (@spirits_in_bar + [@spirit_outside_bar]))
+
+      @ingredients_in_bar = @spirits_in_bar.map { |s| create(:ingredient, spirit: s) }
+      @ingredient_outside_bar = create(:ingredient, spirit: @spirit_outside_bar)
+
+      @recipe_in_bar = create(:recipe, ingredients: @ingredients_in_bar)
+      @recipe_outside_bar = create(:recipe, ingredients: (@ingredients_in_bar + [@ingredient_outside_bar]))
+
       @bar = create(:bar, spirits: @spirits_in_bar)
     end
 

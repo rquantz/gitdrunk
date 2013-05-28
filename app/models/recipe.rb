@@ -4,4 +4,8 @@ class Recipe < ActiveRecord::Base
   has_many :spirits, through: :ingredients
   
   validates :cocktail, presence: true
+  
+  def as_json(options={})
+    super(options.merge({include: :ingredients}))
+  end
 end

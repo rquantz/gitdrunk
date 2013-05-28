@@ -22,7 +22,6 @@ class RecipesController < ApplicationController
   # PATCH/PUT /recipes/1
   def update
     @recipe.update(recipe_params)
-    puts @recipe.to_json
     render json: @recipe.to_json
   end
 

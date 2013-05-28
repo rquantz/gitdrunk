@@ -13,4 +13,10 @@ describe Ingredient do
   it 'is not valid without a recipe' do
     expect(build(:ingredient, recipe: nil)).not_to be_valid
   end
+  describe 'spirit_name' do
+    it "returns the name of the ingredient's spirit" do
+      ingredient = create(:ingredient)
+      expect(ingredient.spirit_name).to eq ingredient.spirit.name
+    end
+  end
 end

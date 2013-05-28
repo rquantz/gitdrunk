@@ -2,8 +2,14 @@
 
 FactoryGirl.define do
   factory :ingredient do
-    recipe { create(:recipe) }
-    spirit { create(:spirit) }
+    recipe
+    spirit 
     amount "1 oz"
+    
+    factory :invalid_ingredient do
+      recipe nil
+      spirit 'bad id'
+      amount nil
+    end
   end
 end
