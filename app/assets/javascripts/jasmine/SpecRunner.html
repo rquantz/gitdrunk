@@ -12,9 +12,19 @@
 
   <!-- include source files here... -->
   <script src="/assets/jquery.js"></script>
+  <script data-turbolinks-track="true" src="/assets/bootstrap-typeahead.js?body=1"></script>
   <script src="/assets/underscore-min.js"></script>
   <script src="/assets/backbone-min.js"></script>
   <script src="/assets/cocktails.js"></script>
+  <!-- lib -->
+  <script data-turbolinks-track="true" src="/assets/lib/form_helpers.js"></script>
+  <script src="/assets/lib/jquery-spirit-search.js"></script>
+  <!-- templates -->
+  <script data-turbolinks-track="true" src="/assets/hamlcoffee.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/templates/context.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/templates/recipes/edit_recipe.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/templates/ingredients/add_ingredients.js?body=1"></script>
+  <script data-turbolinks-track="true" src="/assets/templates/ingredients/edit_ingredient.js?body=1"></script>
   <!-- models -->
   <script src="/assets/models/recipe.js"></script>
   <script src="/assets/models/ingredient.js"></script>
@@ -22,18 +32,24 @@
   <script src="/assets/collections/ingredients.js"></script>
   <!-- views -->
   <script src="/assets/views/recipes/edit_recipe.js"></script>
+  <script src="/assets/views/ingredients/add_ingredients.js"></script>
+  <script src="/assets/views/ingredients/edit_ingredient.js"></script>
 
   <!-- include spec files here... -->
   <script src="/assets/spec/helpers/recipe_helpers.js"></script>
+  <script src="/assets/spec/lib/form_helpers_spec.js"></script>
   <script src="/assets/spec/models/recipe_spec.js"></script>
   <script src="/assets/spec/models/ingredient_spec.js"></script>
   <script src="/assets/spec/collections/ingredients_spec.js"></script>
   <script src="/assets/spec/views/recipes/edit_recipe_spec.js"></script>
+  <script src="/assets/spec/views/ingredients/add_ingredients_spec.js"></script>
+  <script src="/assets/spec/views/ingredients/edit_ingredient_spec.js"></script>
   
   
 
   <script type="text/javascript">
     (function() {
+      jasmine.getFixtures().fixturesPath = '/assets/spec/fixtures';
       var jasmineEnv = jasmine.getEnv();
       jasmineEnv.updateInterval = 1000;
 

@@ -11,5 +11,7 @@
 .description
   = simple_format @cocktail.description
 
+%section.js-cocktail_recipes{'data-cocktail-id' => @cocktail.id}
+
 %section
-  = link_to 'Add a recipe', '#'
+  = link_to 'Add a recipe', '#', class: 'add_recipe_to_cocktail'

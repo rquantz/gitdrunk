@@ -1,0 +1,2 @@
+%span.ingredient_amount= @amount
+%span.ingredient_name= @spirit_name

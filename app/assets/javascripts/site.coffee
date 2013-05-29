@@ -70,6 +70,9 @@
             .draggable(revert: 'invalid')
             .droppable(droppable_prefs)
 
+  get_cocktail_id = ->
+    $('.js-cocktail_recipes').data('cocktail-id')
+
   $(->
                      
     $('.nested-spirits').not('.brand-spirit').each ->
@@ -89,6 +92,15 @@
               names.push @name
             return process names
 
+    $('.add_recipe_to_cocktail').click ->
+      console.log('clicked')
+      window.recipe = new App.Models.Recipe({cocktail_id: get_cocktail_id()})
+      
+      recipe.save().done ->
+        console.log recipe.url()
+        (new App.Views.EditRecipe(model: recipe)).$el.appendTo('.js-cocktail_recipes')
+        
+      return false
   )
   
 )(jQuery, window)
