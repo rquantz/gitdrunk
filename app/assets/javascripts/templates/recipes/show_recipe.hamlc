@@ -1,0 +1,11 @@
+%ul.list_ingredients
+  - _(@ingredients).each (ingredient) ->
+    %li.show_ingredient
+      = ingredient.amount
+      = ingredient.spirit_name
+.tasting_notes
+  = @tasting_notes
+.show_recipe_actions
+  %button.btn.edit_recipe_btn Edit
+  %button.btn.btn-danger.delete_recipe_btn Delete
+

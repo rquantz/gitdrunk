@@ -1,0 +1,4 @@
+.show_recipes_container
+.list_recipes_actions
+  %a.new_recipe_link{href: '#'} Add a new recipe
+

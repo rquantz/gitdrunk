@@ -5,7 +5,7 @@ class IngredientsController < ApplicationController
     @ingredient = Ingredient.create(ingredient_params)
     respond_with @ingredient
   end
-  
+
   def update
     @ingredient = Ingredient.find(params[:id])
     if @ingredient.update(ingredient_params)
@@ -14,7 +14,12 @@ class IngredientsController < ApplicationController
       render json: @ingredient.to_json, status: :unprocessable_entity
     end
   end
-  
+
+  def destroy
+    @ingredient = Ingredient.find(params[:id])
+    respond_with @ingredient.destroy
+  end
+
   private
     def ingredient_params
       params.require(:ingredient).permit(:spirit_id, :recipe_id, :amount)

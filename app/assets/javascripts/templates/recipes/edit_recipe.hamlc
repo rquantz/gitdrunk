@@ -1,4 +1,10 @@
-.ingredients_list
-%form.edit_recipe_form
-  %label Tasting Notes
-  %textarea.tasting_notes_field.span6{name: 'tasting_notes', rows: 6}= @tasting_notes
+.modal
+  %form.edit_recipe_form.modal_form
+    .modal-header
+      %h3 Edit recipe
+    .modal-body
+      .ingredients_list
+      %label Tasting Notes
+      %textarea.tasting_notes_field.span6{name: 'tasting_notes', rows: 6}= @tasting_notes
+    .modal-footer.edit_recipe_actions
+      %button.submit_save_recipe.btn{type: 'submit'} Save recipe

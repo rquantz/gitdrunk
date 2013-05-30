@@ -35,3 +35,26 @@ describe "EditRecipe", ->
         spyOn(recipe, 'save')
         edit_recipe_view.save()
         expect(recipe.save).toHaveBeenCalledWith(edit_recipe_view.form_values())
+
+      it "dismisses the modal window", ->
+        spyOn(edit_recipe_view, 'dismiss_modal')
+        edit_recipe_view.save()
+        expect(edit_recipe_view.dismiss_modal).toHaveBeenCalled()
+
+    describe "form submit", ->
+      it 'calls the save on submit event', ->
+        spyOn(edit_recipe_view, 'save')
+        edit_recipe_view.$('.edit_recipe_form').trigger('submit')
+        expect(edit_recipe_view.save).toHaveBeenCalled()
+        
+    describe 'modal', ->
+      beforeEach ->
+        spyOn(edit_recipe_view.$el, 'modal')
+
+      it 'calls the modal jQuery plugin', ->
+        edit_recipe_view.modal()
+        expect(edit_recipe_view.$el.modal).toHaveBeenCalled()
+
+      it 'is dismissed with dismiss_modal', ->
+        edit_recipe_view.dismiss_modal()
+        expect(edit_recipe_view.$el.modal).toHaveBeenCalledWith('hide')

@@ -18,3 +18,19 @@ describe 'EditIngredient', ->
     
     it 'contains the spirit name', ->
       expect(edit_ingredient_view.$el.html()).toMatch(ingredient.get('spirit_name'))
+      
+    describe 'delete', ->
+      it 'removes the ingredient from the DOM', ->
+        spyOn(edit_ingredient_view, 'remove')
+        edit_ingredient_view.delete()
+        expect(edit_ingredient_view.remove).toHaveBeenCalled()
+
+      it 'destroys the ingredient model', ->
+        spyOn(edit_ingredient_view.model, 'destroy')
+        edit_ingredient_view.delete()
+        expect(edit_ingredient_view.model.destroy).toHaveBeenCalled()
+        
+      it 'is called when delete_ingredient_btn is clicked', ->
+        spyOn(edit_ingredient_view, 'delete')
+        edit_ingredient_view.$('.delete_ingredient_btn').trigger('click')
+        expect(edit_ingredient_view.delete).toHaveBeenCalled()

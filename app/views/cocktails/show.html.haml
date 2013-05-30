@@ -13,5 +13,7 @@
 
 %section.js-cocktail_recipes{'data-cocktail-id' => @cocktail.id}
 
-%section
-  = link_to 'Add a recipe', '#', class: 'add_recipe_to_cocktail'
+%script
+  = json_safe "window.recipes = new App.Collections.Recipes(#{@cocktail.recipes.to_json});".html_safe
+  = json_safe "window.cocktail_id = #{@cocktail.id};".html_safe
+  new App.Views.ListRecipes({collection: recipes, cocktail_id: cocktail_id}).$el.appendTo('.js-cocktail_recipes');

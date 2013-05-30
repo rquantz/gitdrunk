@@ -1,2 +1,4 @@
+%span.ingredient_actions
+  %button.btn-warning.btn-mini.delete_ingredient_btn remove
 %span.ingredient_amount= @amount
 %span.ingredient_name= @spirit_name

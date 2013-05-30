@@ -46,15 +46,21 @@ describe "AddIngredients", ->
 
 
     describe 'add', ->
+      ingredient_attributes = null
+
       beforeEach ->
-        add_ingredients_view.$('.spirit_search_field').val('Orange Bitters')
-        add_ingredients_view.$('.ingredient_amount_field').val('1 oz')
-        add_ingredients_view.set_spirit_id('4')
+        ingredient_attributes = 
+          spirit_name: 'Orange Bitters'
+          amount: '1 oz'
+          spirit_id: '4'
+        add_ingredients_view.$('.spirit_search_field').val(ingredient_attributes.spirit_name)
+        add_ingredients_view.$('.ingredient_amount_field').val(ingredient_attributes.amount)
+        add_ingredients_view.set_spirit_id(ingredient_attributes.spirit_id)
 
       it 'adds a new ingredient that matches the name entered', ->
         add_ingredients_view.add()
         expect(add_ingredients_view.$('ul .ingredient').length).toBe(3)
-        expect(add_ingredients_view.collection.pluck("spirit_name")).toContain('Orange Bitters')
+        expect(add_ingredients_view.collection.pluck("spirit_name")).toContain(ingredient_attributes.spirit_name)
         
       it 'sets the new ingredient recipe_id to the parent recipe', ->
         add_ingredients_view.add()
@@ -64,13 +70,21 @@ describe "AddIngredients", ->
         spyOn(add_ingredients_view, 'clear_form')
         add_ingredients_view.add()
         expect(add_ingredients_view.clear_form).toHaveBeenCalled()
+      
+      it 'saves the ingredient', ->
+        jasmine.Ajax.useMock()
 
+        add_ingredients_view.add()
+        request = mostRecentAjaxRequest()
+        request.response(AjaxResponses.create_ingredient.success(ingredient_attributes))
+        new_ingredient = add_ingredients_view.collection.findWhere(spirit_name: 'Orange Bitters')
 
+        expect(new_ingredient.isNew()).toBeFalsy()
+        
     describe 'form submit', ->
       it 'calls #add', ->
         spyOn(add_ingredients_view, 'add')
         add_ingredients_view.$('.add_ingredient_form').trigger('submit')
         expect(add_ingredients_view.add).toHaveBeenCalled()
-
 
 

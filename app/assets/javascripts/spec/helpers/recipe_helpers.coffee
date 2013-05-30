@@ -9,3 +9,18 @@ window.build_recipe = ->
       spirit_name: "Gin"
     }]
   })
+  
+window.build_recipes = ->
+  recipes = []
+  for i in [1..5]
+    recipes.push(
+      id: i
+      cocktail_id: i + 5
+      tasting_notes: "Delicious #{i}"
+      ingredients: [{
+        id: i + 10
+        amount: "1 oz"
+        spirit_name: "Gin #{i}"
+      }]
+    )
+  new App.Collections.Recipes(recipes)

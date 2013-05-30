@@ -56,4 +56,15 @@ describe IngredientsController do
       end
     end
   end
+  
+  describe 'DELETE #destroy' do
+    before :each do
+      @ingredient = create(:ingredient)
+    end
+    it 'deletes the ingredient' do
+      expect {
+        delete :destroy, id: @ingredient, format: :json
+      }.to change(Ingredient, :count).by(-1)
+    end
+  end
 end

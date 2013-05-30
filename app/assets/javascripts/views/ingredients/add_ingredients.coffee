@@ -16,6 +16,7 @@
       ingredient = new App.Models.Ingredient(_(ingredient_attributes).extend(recipe_id: @recipe_id()))
       @collection.add ingredient
       @clear_form()
+      ingredient.save()
     recipe_id: ->
       @options.recipe_id
     add_to_list: (ingredient) ->
