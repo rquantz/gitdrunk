@@ -4,6 +4,7 @@ FactoryGirl.define do
   factory :recipe do
     cocktail { create(:cocktail) }
     tasting_notes "Delicious"
+    instructions "Shake and stir"
     
     factory :recipe_with_ingredients do
       after(:build) do |recipe|

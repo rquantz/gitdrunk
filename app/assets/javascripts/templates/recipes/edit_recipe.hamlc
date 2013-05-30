@@ -4,7 +4,9 @@
       %h3 Edit recipe
     .modal-body
       .ingredients_list
+      %label Instructions
+      %textarea.instructions_field.span6{name: 'instructions', rows: 2}= @instructions
       %label Tasting Notes
-      %textarea.tasting_notes_field.span6{name: 'tasting_notes', rows: 6}= @tasting_notes
+      %textarea.tasting_notes_field.span6{name: 'tasting_notes', rows: 3}= @tasting_notes
     .modal-footer.edit_recipe_actions
-      %button.submit_save_recipe.btn{type: 'submit'} Save recipe
+      %button.submit_save_recipe.btn.btn-primary{type: 'submit'} Save recipe

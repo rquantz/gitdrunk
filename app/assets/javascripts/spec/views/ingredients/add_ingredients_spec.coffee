@@ -27,7 +27,7 @@ describe "AddIngredients", ->
       expect(add_ingredients_view.$el).toContain('.ingredient_spirit_id_field')
     
     it 'generates a list of ingredients', ->
-      expect(add_ingredients_view.$('ul .ingredient').length).toBe(2)
+      expect(add_ingredients_view.$('table .ingredient').length).toBe(2)
 
     describe 'set_spirit_id', ->
       it 'sets the ingredient_spirit_id_field value', ->
@@ -59,7 +59,7 @@ describe "AddIngredients", ->
 
       it 'adds a new ingredient that matches the name entered', ->
         add_ingredients_view.add()
-        expect(add_ingredients_view.$('ul .ingredient').length).toBe(3)
+        expect(add_ingredients_view.$('table .ingredient').length).toBe(3)
         expect(add_ingredients_view.collection.pluck("spirit_name")).toContain(ingredient_attributes.spirit_name)
         
       it 'sets the new ingredient recipe_id to the parent recipe', ->

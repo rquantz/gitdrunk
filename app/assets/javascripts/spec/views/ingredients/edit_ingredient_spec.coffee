@@ -14,7 +14,7 @@ describe 'EditIngredient', ->
       edit_ingredient_view = new App.Views.EditIngredient({model: ingredient})
 
     it 'has an element', ->
-      expect(edit_ingredient_view.$el).toBe('li.ingredient.edit_ingredient')
+      expect(edit_ingredient_view.$el).toBe('tr.ingredient.edit_ingredient')
     
     it 'contains the spirit name', ->
       expect(edit_ingredient_view.$el.html()).toMatch(ingredient.get('spirit_name'))

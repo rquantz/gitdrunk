@@ -1,6 +1,7 @@
-%ul.ingredients_list
+.well
+  %table.ingredients_list
 %form.add_ingredient_form.form-inline
   %input.ingredient_amount_field.input-small{type: 'text', placeholder: 'Amount', name: 'amount'}
   %input.spirit_search_field{type: 'text', placeholder: 'Ingredient name', name: 'spirit_name'}
   %input.ingredient_spirit_id_field{type: 'hidden', name: 'spirit_id'}
-  %button.submit_add_ingredient.btn.btn-primary{type: 'submit'} Add
+  %button.submit_add_ingredient.btn{type: 'submit'} Add

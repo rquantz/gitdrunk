@@ -3,7 +3,7 @@
   App.Views.EditIngredient = Backbone.View.extend(
     initialize: ->
       @render()
-    tagName: 'li'
+    tagName: 'tr'
     className: 'ingredient edit_ingredient'
     template: JST['ingredients/edit_ingredient']
     render: ->
