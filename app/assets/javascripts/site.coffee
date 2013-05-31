@@ -34,7 +34,7 @@
               .draggable(revert: 'invalid')
               .droppable(droppable_prefs)
             if !new_spirit.hasClass('brand-spirit')
-              render_spirit_form(response['id']).wrap("<ul class='children-of-spirit-#{response['id']}'>")
+              render_spirit_form(response['id']).wrap("<ul class='children-of-spirit-#{response['id']} nested_spirits'>")
                 .parent()
                 .insertAfter(new_spirit)
 
