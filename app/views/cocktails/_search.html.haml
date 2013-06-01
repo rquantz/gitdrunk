@@ -1,0 +1,5 @@
+= form_tag search_cocktails_path, method: :get, class: 'form-search search-cocktails' do
+  .input-append
+    = text_field_tag :q, nil, class: ['span3', 'search-query']
+    = button_tag 'Search', class: 'btn'
+

@@ -44,6 +44,11 @@ class CocktailsController < ApplicationController
     @cocktail.destroy
     redirect_to cocktails_url, notice: 'Cocktail was successfully destroyed.'
   end
+  
+  def search
+    @cocktails = Cocktail.search(params[:q])
+    render :index
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

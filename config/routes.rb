@@ -52,6 +52,7 @@ Cocktails::Application.routes.draw do
   get 'spirits/search/:search' => 'spirits#search'
   resources :spirits
   
+  get 'cocktails/search' => 'cocktails#search', as: 'search_cocktails'
   resources :cocktails
   
   resources :recipes, except: [:new, :edit]

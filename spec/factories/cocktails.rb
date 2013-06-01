@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :cocktail do
-    name "MyString"
+    name "Aviation"
     description "MyText"
   end
 end

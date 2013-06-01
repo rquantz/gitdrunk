@@ -60,6 +60,13 @@ describe CocktailsController do
       assigns(:cocktail).should eq(cocktail)
     end
   end
+  
+  describe "GET search" do
+    it 'renders the index view' do
+      get :search, search: 'Avia'
+      expect(response).to render_template :index
+    end
+  end
 
   describe "POST create" do
     describe "with valid params" do
