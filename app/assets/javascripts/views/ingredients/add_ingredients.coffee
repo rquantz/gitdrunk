@@ -3,6 +3,7 @@
   App.Views.AddIngredients = Backbone.View.extend(
     initialize: ->
       @render()
+      @clear_form()
       @collection.on 'add', (ingredient) => @add_to_list(ingredient)
     template: JST['ingredients/add_ingredients']
     className: 'ingredients add_ingredients'
