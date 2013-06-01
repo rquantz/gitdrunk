@@ -25,6 +25,7 @@
       @$('.ingredient_spirit_id_field').val(spirit_id)
     clear_form: ->
       @$('.ingredient_amount_field, .spirit_search_field, .ingredient_spirit_id_field').val('')
+      @$('.ingredient_amount_field').focus()
     events:
       "submit .add_ingredient_form": "form_submit"
     form_submit: ->

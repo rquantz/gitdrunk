@@ -39,10 +39,19 @@ describe "AddIngredients", ->
         expect(add_ingredients_view.recipe_id()).toBe(3)
         
     describe 'clear_form', ->
-      it 'clears the values from the add ingredient form', ->
+      beforeEach ->
+        add_ingredients_view.$el.appendTo('body')
         add_ingredients_view.$('.spirit_search_field').val('Orange Bitters')
         add_ingredients_view.clear_form()
+        
+      afterEach ->
+        add_ingredients_view.remove()
+
+      it 'clears the values from the add ingredient form', ->
         expect(add_ingredients_view.$('.spirit_search_field').val()).toBeFalsy()
+        
+      it 'gives the amount field focus', ->
+        expect(add_ingredients_view.$('.ingredient_amount_field')).toBeFocused()
 
 
     describe 'add', ->
