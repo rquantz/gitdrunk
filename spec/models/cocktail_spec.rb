@@ -7,4 +7,8 @@ describe Cocktail do
   it 'is not valid without a name' do
     expect(build(:cocktail, name: nil)).not_to be_valid
   end
+  it 'must have a unique name' do
+    create(:cocktail, name: 'Aviation')
+    expect(build(:cocktail, name: 'Aviation')).not_to be_valid
+  end
 end
