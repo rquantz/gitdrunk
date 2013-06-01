@@ -3,7 +3,7 @@ class CocktailsController < ApplicationController
 
   # GET /cocktails
   def index
-    @cocktails = Cocktail.all.order(:name)
+    @cocktails = Cocktail.order(:name).paginate(page: params[:page])
   end
 
   # GET /cocktails/1

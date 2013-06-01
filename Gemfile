@@ -63,7 +63,8 @@ gem 'haml-rails'
 
 gem 'ancestry', git: 'https://github.com/stefankroes/ancestry.git'
 
-
+gem 'will_paginate', '~> 3.0'
+gem 'will_paginate-bootstrap'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -20,6 +20,6 @@
       %td= link_to 'Edit', edit_cocktail_path(cocktail)
       %td= link_to 'Destroy', cocktail, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
+= will_paginate @cocktails, :renderer => BootstrapPagination::Rails
 
 = link_to 'New Cocktail', new_cocktail_path
