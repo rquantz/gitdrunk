@@ -8,6 +8,7 @@
     template: JST['ingredients/edit_ingredient']
     render: ->
       @$el.html @template(@model.attributes)
+      @$el.data('cid', @model.cid)
     delete: ->
       @remove()
       @model.destroy()

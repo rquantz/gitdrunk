@@ -18,6 +18,9 @@ describe 'EditIngredient', ->
     
     it 'contains the spirit name', ->
       expect(edit_ingredient_view.$el.html()).toMatch(ingredient.get('spirit_name'))
+
+    it 'adds the model.cid to the element data', ->
+      expect(edit_ingredient_view.$el.data('cid')).toEqual(ingredient.cid)
       
     describe 'delete', ->
       it 'removes the ingredient from the DOM', ->

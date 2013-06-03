@@ -95,5 +95,18 @@ describe "AddIngredients", ->
         spyOn(add_ingredients_view, 'add')
         add_ingredients_view.$('.add_ingredient_form').trigger('submit')
         expect(add_ingredients_view.add).toHaveBeenCalled()
+        
+    describe 'get_recipe_order', ->
+      beforeEach ->
+        add_ingredients_view.$el.appendTo('body')
+
+      afterEach ->
+        add_ingredients_view.$el.remove()
+
+      it 'returns the actual dom order of the ingredients as a hash', ->
+        expected_hash = {}
+        add_ingredients_view.collection.each (ingredient, i) ->
+          expected_hash[ingredient.cid] = i
+        expect(add_ingredients_view.get_recipe_order()).toEqual(expected_hash)
 
 
