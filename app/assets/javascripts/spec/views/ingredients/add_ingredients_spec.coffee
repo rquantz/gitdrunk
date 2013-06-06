@@ -6,8 +6,8 @@ describe "AddIngredients", ->
 
     beforeEach ->
       ingredients = new App.Collections.Ingredients([
-        {amount: '1 oz', spirit_name: 'Gin', spirit_id: 1, recipe_id: 3},
-        {amount: '1 oz', spirit_name: 'Vermouth', spirit_id: 2, recipe_id: 3}
+        {amount: '1 oz', spirit_name: 'Gin', spirit_id: 1, recipe_id: 3, recipe_order: 0},
+        {amount: '1 oz', spirit_name: 'Vermouth', spirit_id: 2, recipe_id: 3, recipe_order: 1}
       ])
       add_ingredients_view = new App.Views.AddIngredients({collection: ingredients, recipe_id: 3})
     
@@ -74,6 +74,10 @@ describe "AddIngredients", ->
       it 'sets the new ingredient recipe_id to the parent recipe', ->
         add_ingredients_view.add()
         expect(add_ingredients_view.collection.last().get('recipe_id')).toBe(3)
+        
+      it 'sets the new ingredient recipe_order so it is last', ->
+        add_ingredients_view.add()
+        expect(add_ingredients_view.collection.last().get('recipe_order')).toBe(add_ingredients_view.collection.length - 1)
         
       it 'clears the add ingredient form', ->
         spyOn(add_ingredients_view, 'clear_form')

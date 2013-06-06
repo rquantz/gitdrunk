@@ -1,4 +1,8 @@
+%td
+  %a
+    %i.icon-resize-vertical
 %td.ingredient_amount.text-info= @amount
 %td.ingredient_name= @spirit_name
 %td.ingredient_actions
   %a.badge.badge-warning.delete_ingredient_btn &times;
+  

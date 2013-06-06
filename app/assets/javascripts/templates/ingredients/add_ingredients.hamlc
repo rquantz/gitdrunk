@@ -1,5 +1,6 @@
 .well
   %table.ingredients_list
+    %tbody
 %form.add_ingredient_form.form-inline
   %input.ingredient_amount_field.input-small{type: 'text', placeholder: 'Amount', name: 'amount'}
   %input.spirit_search_field{type: 'text', placeholder: 'Ingredient name', name: 'spirit_name'}

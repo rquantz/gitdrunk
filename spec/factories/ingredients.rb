@@ -5,6 +5,7 @@ FactoryGirl.define do
     recipe
     spirit 
     amount "1 oz"
+    recipe_order { rand(100) }
     
     factory :invalid_ingredient do
       recipe nil

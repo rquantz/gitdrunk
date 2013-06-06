@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :cocktail do
-    name "Aviation"
+    name { Faker::Name.first_name }
     description "MyText"
   end
 end

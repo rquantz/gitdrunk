@@ -37,3 +37,19 @@ describe 'EditIngredient', ->
         spyOn(edit_ingredient_view, 'delete')
         edit_ingredient_view.$('.delete_ingredient_btn').trigger('click')
         expect(edit_ingredient_view.delete).toHaveBeenCalled()
+        
+      it 'triggers a "delete" event', ->
+        triggered = false
+        edit_ingredient_view.on 'delete', ->
+          triggered = true
+        edit_ingredient_view.delete()
+        expect(triggered).toBeTruthy()
+        
+      it 'passed itself to the "delete" event callback', ->
+        callback_arg = null
+        edit_ingredient_view.on 'delete', (arg) ->
+          callback_arg = arg
+        edit_ingredient_view.delete()
+        expect(callback_arg).toBe(edit_ingredient_view)
+
+        

@@ -22,6 +22,6 @@ class IngredientsController < ApplicationController
 
   private
     def ingredient_params
-      params.require(:ingredient).permit(:spirit_id, :recipe_id, :amount)
+      params.require(:ingredient).permit(:spirit_id, :recipe_id, :amount, :recipe_order)
     end
 end

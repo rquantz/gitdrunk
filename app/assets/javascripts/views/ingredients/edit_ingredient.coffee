@@ -12,6 +12,7 @@
     delete: ->
       @remove()
       @model.destroy()
+      @trigger('delete', this)
     events:
       'click .delete_ingredient_btn': 'delete_ingredient'
     delete_ingredient: ->

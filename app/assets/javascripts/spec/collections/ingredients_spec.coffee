@@ -18,4 +18,4 @@ describe "Ingredients", ->
     it 'orders the models by recipe_order', ->
       expect(ingredients.last().get('recipe_order')).toBe(4)
       expect(ingredients.first().get('recipe_order')).toBe(0)
-      
+
