@@ -58,4 +58,6 @@ Cocktails::Application.routes.draw do
   resources :recipes, except: [:new, :edit]
   
   resources :ingredients
+  
+  get 'bar' => 'bars#show', as: 'bar'
 end

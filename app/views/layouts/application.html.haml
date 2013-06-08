@@ -18,7 +18,7 @@
               %li= link_to 'Cocktails', cocktails_url
             %ul.nav.pull-right
               %li 
-                %a= "Welcome, #{current_user.email}" if current_user
+                %a= "Welcome, #{current_user.username}" if current_user
   
     .container
       = yield

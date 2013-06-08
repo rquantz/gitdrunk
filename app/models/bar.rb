@@ -5,8 +5,8 @@ class Bar < ActiveRecord::Base
   
   before_save :add_ancestors
   
-  def can_make?(recipe)
-    (recipe.spirits & spirits).count == recipe.spirits.count
+  def can_make?(recipe, modifier = 0)
+    (recipe.spirits & spirits).count == recipe.spirits.count - modifier
   end
   
   def recipes
