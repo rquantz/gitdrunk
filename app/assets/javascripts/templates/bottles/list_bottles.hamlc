@@ -1,0 +1,2 @@
+- @each (bottle) ->
+  %li.list_bottles_bottle= bottle.get('spirit_name')

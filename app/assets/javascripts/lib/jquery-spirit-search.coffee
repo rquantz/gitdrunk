@@ -94,12 +94,12 @@
       str = str.replace(change.letters, change.base)
     str
 
-  $.fn.spirit_search = (view) ->
+  $.fn.spirit_search = (view, url = (query) -> "/spirits/search/#{query}") ->
     spirits = null
     @typeahead
       source: (query, process) ->
         $.ajax
-          url: "/spirits/search/#{query}"
+          url: url(query)
           type: 'GET'
           dataType: 'json'
           success: (json) ->
@@ -110,7 +110,8 @@
               names.push @name
             return process names
       updater: (item) ->
-        view.set_spirit_id(spirits[item])
+        view.set_spirit_id?(spirits[item])
+        view.set_spirit_name?(item)
         item
       matcher: (item) ->
         ~item.toLowerCase().indexOf(@query.toLowerCase()) || ~removeDiacritics(item).toLowerCase().indexOf(@query.toLowerCase())

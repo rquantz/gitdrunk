@@ -5,6 +5,14 @@ class Bar < ActiveRecord::Base
   
   before_save :add_ancestors
   
+  def brand_spirits
+    spirits.where(is_brand: true)
+  end
+  
+  def brand_bottles
+    bottles.joins(:spirit).where('spirits.is_brand = true')
+  end
+  
   def can_make?(recipe, modifier = 0)
     (recipe.spirits & spirits).count == recipe.spirits.count - modifier
   end

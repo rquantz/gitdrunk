@@ -1,0 +1,4 @@
+%h3 Add a spirit to your bar
+%form.add_bottles_form.form-inline
+  %input.spirit_search_field{type: 'text', placeholder: 'Spirit name', name: 'spirit_name'}
+  %button.submit_add_bottle.btn.disabled{type: 'submit'} Add

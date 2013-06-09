@@ -60,4 +60,6 @@ Cocktails::Application.routes.draw do
   resources :ingredients
   
   get 'bar' => 'bars#show', as: 'bar'
+  
+  resources :bottles, only: [:create, :destroy]
 end

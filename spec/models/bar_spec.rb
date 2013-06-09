@@ -6,7 +6,9 @@ describe Bar do
     before do
       @spirit = create(:child_spirit)
       @same_parent = create(:child_spirit, name: 'Beefeater Gin', parent: @spirit.parent)
-      @bar = create(:bar, spirits: [@spirit, @same_parent])
+      @bar = create(:bar)
+      @bar.spirits << [@spirit, @same_parent]
+      @bar.save
     end
 
     it 'has the ancestors of all its bottles' do
@@ -30,6 +32,20 @@ describe Bar do
       @bar.spirits.delete @same_parent
       expect(@bar).to have(2).spirits
     end
+
+    describe '#brand_spririts' do
+      it 'returns only the spirits that are brands' do
+        expect(@bar.brand_spirits).to include(@spirit)
+        expect(@bar.brand_spirits).not_to include(@spirit.parent)
+      end
+    end
+    
+    describe '#brand_bottles' do
+      it 'returns only the bottles whose spirits are brands' do
+        expect((@bar.brand_bottles & @spirit.bottles).length).to be(1)
+        expect((@bar.brand_bottles & @spirit.parent.bottles).length).to be(0)
+      end
+    end
   end
 
   context 'with recipes' do
@@ -43,7 +59,9 @@ describe Bar do
       @recipe_in_bar = create(:recipe, ingredients: @ingredients_in_bar)
       @recipe_outside_bar = create(:recipe, ingredients: (@ingredients_in_bar + [@ingredient_outside_bar]))
 
-      @bar = create(:bar, spirits: @spirits_in_bar)
+      @bar = create(:bar)
+      @bar.spirits << @spirits_in_bar
+      @bar.save
     end
 
     it 'can make a recipe if it has all the ingredients in the recipe' do

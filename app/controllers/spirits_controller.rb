@@ -53,7 +53,13 @@ class SpiritsController < ApplicationController
   end
   
   def search
-    @spirits = Spirit.search params[:search]
+    puts params[:brand_only]
+    if params[:brand_only] == "true"
+      
+      @spirits = Spirit.search params[:search], with: { is_brand: true }
+    else
+      @spirits = Spirit.search params[:search]
+    end
     respond_with @spirits
   end
 

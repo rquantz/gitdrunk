@@ -1,0 +1,11 @@
+.row
+  .span4
+    .bar-spirits-list
+      %h3 Spirits you own
+      .js-list_bottles_container
+  .span8
+    .js-add_bottles_container
+%script
+  = json_safe "window.bottles = new App.Collections.Bottles(#{@bar.brand_bottles.to_json});".html_safe
+  new App.Views.ListBottles({collection: bottles}).$el.appendTo('.js-list_bottles_container');
+  new App.Views.AddBottles({collection: bottles}).$el.appendTo('.js-add_bottles_container');
