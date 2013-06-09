@@ -4,7 +4,7 @@
     initialize: ->
       @render()
       @collection.on 'add', => @render()
-    tagName: 'ul'
+    tagName: 'dl'
     className: 'list_bottles'
     template: JST['bottles/list_bottles']
     render: ->

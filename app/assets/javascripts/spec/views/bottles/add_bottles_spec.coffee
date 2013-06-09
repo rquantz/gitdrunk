@@ -33,9 +33,14 @@ describe 'AddBottles', ->
         add_bottles_view.set_spirit_id(6)
         add_bottles_view.set_spirit_name('Cleopatra Mead')
 
-      it 'adds a bottle to the collection', ->
+      it 'adds a bottle to the collection when the record is saved', ->
+        jasmine.Ajax.useMock()
+
         collection_length = bottles.length
         add_bottles_view.add_bottle()
+        request = mostRecentAjaxRequest()
+        request.response(AjaxResponses.save_bottle.success(spirit_id: 6, spirit_name: 'Cleopatra Mead'))
+
         expect(bottles.length).toEqual(collection_length + 1)
 
       it 'saves the bottle', ->

@@ -1,2 +1,4 @@
-- @each (bottle) ->
-  %li.list_bottles_bottle= bottle.get('spirit_name')
+- for category, bottles of @categories()
+  %dt= category
+  - for bottle in bottles
+    %dd.list_bottles_bottle= bottle.get('spirit_name')

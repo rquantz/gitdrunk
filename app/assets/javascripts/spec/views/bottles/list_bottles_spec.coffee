@@ -7,7 +7,7 @@ describe 'ListBottles', ->
     list_bottles_view = new App.Views.ListBottles(collection: bottles)
 
   it 'has an element', ->
-    expect(list_bottles_view.$el).toBe('ul.list_bottles')
+    expect(list_bottles_view.$el).toBe('dl.list_bottles')
     
   it 'renders its collection as a list', ->
     expect(list_bottles_view.$('.list_bottles_bottle').length).toEqual(bottles.length)

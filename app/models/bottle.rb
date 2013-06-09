@@ -10,7 +10,11 @@ class Bottle < ActiveRecord::Base
     spirit.name
   end
   
+  def spirit_root
+    spirit.root.name unless spirit.root?
+  end
+
   def as_json(options={})
-    super(options.merge(methods: :spirit_name))
+    super(options.merge(methods: [:spirit_name, :spirit_root]))
   end
 end

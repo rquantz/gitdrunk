@@ -5,5 +5,6 @@ window.build_bottles = ->
       id: i
       spirit_id: i + 5
       spirit_name: "Spirit #{i}"
+      spirit_root: if i % 2 == 0 then 'Even' else 'Odd'
       
   return new App.Collections.Bottles(bottles)

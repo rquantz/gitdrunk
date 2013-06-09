@@ -16,8 +16,8 @@
     add_bottle: ->
       if @spirit_id? && @spirit_name?
         bottle = new App.Models.Bottle(spirit_id: @spirit_id, spirit_name: @spirit_name)
-        @collection.add bottle
-        bottle.save()
+        promise = bottle.save().done? =>
+          @collection.add bottle
         @clear_spirit()
     clear_spirit: ->
         @spirit_id = null
