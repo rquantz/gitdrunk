@@ -1,10 +1,24 @@
 .row
-  .span4
+  .span7
     .bar-spirits-list
+      .js-add_bottles_container
       %h3 Spirits you own
       .js-list_bottles_container
-  .span8
-    .js-add_bottles_container
+  .span5
+    .cocktails-container
+      %h3
+        Cocktails you can make
+        %small.bar-cocktails-reload.pull-right= link_to 'Reload', bar_url, class: ['btn']
+      - if @bar.cocktails.any?
+        %ul.bar-recipes-list
+          - @bar.cocktails.each do |cocktail|
+            %li= link_to cocktail.name, cocktail_url(cocktail)
+      - else
+        %p
+          Doesn't look like you have enough ingredients to make any yet. If you've added to your bar,
+          = link_to 'reload to see if you have any new cocktails', bar_url
+       
+
 %script
   = json_safe "window.bottles = new App.Collections.Bottles(#{@bar.brand_bottles.to_json});".html_safe
   new App.Views.ListBottles({collection: bottles}).$el.appendTo('.js-list_bottles_container');

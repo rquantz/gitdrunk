@@ -14,11 +14,15 @@ class Bar < ActiveRecord::Base
   end
   
   def can_make?(recipe, modifier = 0)
-    (recipe.spirits & spirits).count == recipe.spirits.count - modifier
+    ((recipe.spirits & spirits).count == recipe.spirits.count - modifier) && recipe.spirits.any?
   end
   
   def recipes
-    Recipe.all.select { |recipe| can_make?(recipe) }
+    @recipes ||= Recipe.all.select { |recipe| can_make?(recipe) }
+  end
+  
+  def cocktails
+    @cocktails ||= recipes.collect { |recipe| recipe.cocktail }.uniq
   end
 
   private

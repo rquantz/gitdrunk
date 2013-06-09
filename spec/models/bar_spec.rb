@@ -54,10 +54,13 @@ describe Bar do
       @spirit_outside_bar = create(:spirit, name: 'Exotic Liquor')
 
       @ingredients_in_bar = @spirits_in_bar.map { |s| create(:ingredient, spirit: s) }
-      @ingredient_outside_bar = create(:ingredient, spirit: @spirit_outside_bar)
+      @another_ingredients_in_bar = @spirits_in_bar.map { |s| create(:ingredient, spirit: s) }
+      @ingredients_outside_bar = (@spirits_in_bar + [@spirit_outside_bar]).map { |s| create(:ingredient, spirit: s) }
 
+      @recipe_without_ingredients = create(:recipe, ingredients: [])
       @recipe_in_bar = create(:recipe, ingredients: @ingredients_in_bar)
-      @recipe_outside_bar = create(:recipe, ingredients: (@ingredients_in_bar + [@ingredient_outside_bar]))
+      @another_recipe_in_bar = create(:recipe, ingredients: @another_ingredients_in_bar, cocktail: @recipe_in_bar.cocktail)
+      @recipe_outside_bar = create(:recipe, ingredients: @ingredients_outside_bar)
 
       @bar = create(:bar)
       @bar.spirits << @spirits_in_bar
@@ -65,6 +68,7 @@ describe Bar do
     end
 
     it 'can make a recipe if it has all the ingredients in the recipe' do
+      puts @recipe_in_bar.ingredients.any?
       expect(@bar.can_make?(@recipe_in_bar)).to be_true
     end
 
@@ -72,8 +76,16 @@ describe Bar do
       expect(@bar.can_make?(@recipe_outside_bar)).to be_false
     end
 
+    it 'cannot make a recipe with no ingredients' do
+      expect(@bar.can_make?(@recipe_without_ingredients)).to be_false
+    end
+
     it 'has all the recipes it can make' do
       expect(@bar.recipes).to include(@recipe_in_bar)
+    end
+    
+    it 'has all the cocktail_ids of the recipes it can make, without duplicates' do
+      expect(@bar.cocktails.length).to be(1)
     end
 
     it 'does not have recipes it cannot make' do
