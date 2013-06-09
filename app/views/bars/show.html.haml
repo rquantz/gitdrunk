@@ -16,8 +16,12 @@
       - else
         %p
           Doesn't look like you have enough ingredients to make any yet. If you've added to your bar,
-          = link_to 'reload to see if you have any new cocktails', bar_url
-       
+      
+      - if @bar.almost_cocktails.any?
+        %h4 Cocktails you need one more ingredient for
+        %ul.bar-recipes-list
+          - @bar.almost_cocktails.each do |cocktail|
+            %li= link_to cocktail.name, cocktail_url(cocktail)
 
 %script
   = json_safe "window.bottles = new App.Collections.Bottles(#{@bar.brand_bottles.to_json});".html_safe

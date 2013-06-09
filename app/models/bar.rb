@@ -24,6 +24,14 @@ class Bar < ActiveRecord::Base
   def cocktails
     @cocktails ||= recipes.collect { |recipe| recipe.cocktail }.uniq
   end
+  
+  def almost_recipes
+    @almost_recipes ||= Recipe.all.select { |recipe| can_make?(recipe, 1) }
+  end
+  
+  def almost_cocktails
+    @almost_cocktails ||= almost_recipes.collect { |recipe| recipe.cocktail }.uniq
+  end
 
   private
     def add_ancestors
