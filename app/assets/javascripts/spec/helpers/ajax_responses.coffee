@@ -11,3 +11,7 @@ window.AjaxResponses =
     success: (attributes) ->
       status: 201
       responseText: JSON.stringify(_(attributes).extend(id: 2323))
+  destroy:
+    success:
+      status: 204
+      responseText: ''

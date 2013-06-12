@@ -11,7 +11,6 @@ describe 'Bottles', ->
       bottles = build_bottles()
 
     it 'returns a hash of the categories from spirit_root', ->
-      console.log bottles
       expect(bottles.categories()['Even']).toBeDefined()
       expect(bottles.categories()['Odd']).toBeDefined()
       

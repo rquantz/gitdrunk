@@ -9,4 +9,4 @@
       %label Tasting Notes
       %textarea.tasting_notes_field.span6{name: 'tasting_notes', rows: 3}= @tasting_notes
     .modal-footer.edit_recipe_actions
-      %button.submit_save_recipe.btn.btn-primary{type: 'submit'} Save recipe
+      %button.submit_save_recipe.btn.btn-primary{type: 'submit'} Done

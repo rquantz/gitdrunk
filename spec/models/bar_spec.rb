@@ -91,5 +91,30 @@ describe Bar do
     it 'does not have recipes it cannot make' do
       expect(@bar.recipes).not_to include(@recipe_outside_bar)
     end
+    
+    context 'next bottle' do
+      before :each do
+        # @another_recipe_outside_bar has the same spirit outside bar as @recipe_outside_bar
+        @another_ingredients_outside_bar = (@spirits_in_bar + [@spirit_outside_bar]).map {|s| create(:ingredient, spirit: s)}
+        @another_spirit_outside_bar = create(:spirit, name: 'Eaux de Vie')
+        @another_recipe_outside_bar = create(:recipe, ingredients: @another_ingredients_outside_bar)
+        @third_ingredients_outside_bar = (@spirits_in_bar + [@another_spirit_outside_bar]).map do |s|
+          i = create(:ingredient, spirit: s)
+          i.save
+          i
+        end
+        # @third_recipe_outside_bar has a different spirit outside bar
+        @third_recipe_outside_bar = create(:recipe, ingredients: @third_ingredients_outside_bar)
+      end
+      
+      describe '#next_bottle' do
+        it 'returns an array of the spirits that will produce the most new recipes' do
+          expect(@bar.next_bottles).to eq([@spirit_outside_bar, @another_spirit_outside_bar])
+        end
+      end
+      describe '#ranked_spirits' do
+        it 'returns a hash of all spirits with the number of new drinks that can be made if added to the bar'
+      end
+    end
   end
 end

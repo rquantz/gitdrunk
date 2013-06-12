@@ -15,14 +15,16 @@
             %li= link_to cocktail.name, cocktail_url(cocktail)
       - else
         %p
-          Doesn't look like you have enough ingredients to make any yet. If you've added to your bar,
+          Doesn't look like you have enough ingredients to make any yet.
       
-      - if @bar.almost_cocktails.any?
-        %h4 Cocktails you need one more ingredient for
-        %ul.bar-recipes-list
-          - @bar.almost_cocktails.each do |cocktail|
-            %li= link_to cocktail.name, cocktail_url(cocktail)
-
+      - if @bar.top_bottles.any?
+        %h4 Your next bottle should be...
+        - @bar.top_bottles.each do |spirits, cocktails|
+          %p= "#{spirits[0].name} will make #{pluralize(cocktails.length, 'new cocktail')}:"
+          %ul
+            - cocktails.each do |cocktail|
+              %li= link_to cocktail.name, cocktail_url(cocktail)
+        
 %script
   = json_safe "window.bottles = new App.Collections.Bottles(#{@bar.brand_bottles.to_json});".html_safe
   new App.Views.ListBottles({collection: bottles}).$el.appendTo('.js-list_bottles_container');

@@ -27,3 +27,6 @@ body { padding: 60px 0; }
 .bar-spirits-list { border-right: 1px solid #ccc; }
 .bar-recipes-list { list-style: none; }
 .bar-cocktails-reload { margin-top: 6px; }
+
+.list_bottles_bottle:hover .list_bottles_destroy { display: inline; }
+.list_bottles_destroy { display: none; }

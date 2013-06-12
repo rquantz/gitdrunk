@@ -1,4 +1,6 @@
 - for category, bottles of @categories()
   %dt= category
   - for bottle in bottles
-    %dd.list_bottles_bottle= bottle.get('spirit_name')
+    %dd.list_bottles_bottle
+      = bottle.get('spirit_name')
+      %a.list_bottles_destroy.text-error{href: '#', 'data-bottle-id': bottle.id} remove
