@@ -2,6 +2,7 @@ class BottlesController < ApplicationController
   respond_to :json
 
   def create
+    authorize! :create, Bottle
     @bottle = Bottle.create(bottle_params.merge(bar_id: current_user.bar.id))
     current_user.bar.save if @bottle.persisted?
     respond_with @bottle
@@ -9,10 +10,9 @@ class BottlesController < ApplicationController
   
   def destroy
     @bottle = Bottle.find(params[:id])
-    if current_user.bar.id == @bottle.bar.id
-      current_user.bar.spirits.delete @bottle.spirit, @bottle.spirit.ancestors
-      current_user.bar.save
-    end
+    authorize! :destroy, @bottle
+    current_user.bar.spirits.delete @bottle.spirit, @bottle.spirit.ancestors
+    current_user.bar.save
     respond_with @bottle
   end
   

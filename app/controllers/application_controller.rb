@@ -5,6 +5,15 @@ class ApplicationController < ActionController::Base
   
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
+  rescue_from CanCan::AccessDenied, with: :handle_access_denied
+
+  def handle_access_denied(ex)
+    respond_to do |format|
+      format.html { redirect_to root_url, alert: ex.message }
+      format.json { render json: ex.message.to_json }
+    end
+  end
+
   protected
 
   def configure_permitted_parameters

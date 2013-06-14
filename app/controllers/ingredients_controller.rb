@@ -2,7 +2,8 @@ class IngredientsController < ApplicationController
   respond_to :json
 
   def create
-    @ingredient = Ingredient.create(ingredient_params)
+    @ingredient = Ingredient.new(ingredient_params)
+    authorize! :create, @ingredient
     respond_with @ingredient
   end
 

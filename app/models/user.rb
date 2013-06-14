@@ -14,4 +14,8 @@ class User < ActiveRecord::Base
   def add_bar
     self.bar = Bar.create
   end
+  
+  def admin?
+    role == 'admin'
+  end
 end

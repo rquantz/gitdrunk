@@ -14,13 +14,17 @@ class RecipesController < ApplicationController
 
   # POST /recipes
   def create
+    authenticate_user!
     @recipe = Recipe.new(recipe_params)
+    @recipe.user = current_user
+    authorize! :create, @recipe
     @recipe.save
     respond_with @recipe
   end
 
   # PATCH/PUT /recipes/1
   def update
+    authorize! :update, @recipe
     @recipe.update(recipe_params)
     render json: @recipe.to_json
   end

@@ -1,5 +1,6 @@
 class Recipe < ActiveRecord::Base
   belongs_to :cocktail
+  belongs_to :user
   has_many :ingredients
   has_many :spirits, through: :ingredients
   
