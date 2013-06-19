@@ -83,7 +83,7 @@ describe RecipesController do
     describe "PUT update" do
       describe "with valid params" do
         before :each do
-          @recipe = create(:recipe)
+          @recipe = create(:recipe, user: @user)
         end
         it "updates the requested recipe" do
           # Assuming there are no other recipes in the database, this

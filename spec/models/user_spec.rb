@@ -93,9 +93,23 @@ describe User do
       end
       
       # Ingredients
-      it 'can read any ingredient'
-      it 'can create, update, or destroy an ingredient for a recipe it owns'
-      it 'cannot create, update, or destroy an ingredient for a recipe it does not own'
+      it 'can read any ingredient' do
+        expect(subject).to be_able_to(:read, build(:ingredient))
+      end
+      it 'can create, update, or destroy an ingredient for a recipe it owns' do
+        subject # need to instantiate @user
+        ingredient = create(:recipe_with_ingredients, user: @user).ingredients.first
+        expect(subject).to be_able_to(:create, ingredient)
+        expect(subject).to be_able_to(:update, ingredient)
+        expect(subject).to be_able_to(:destroy, ingredient)
+      end
+      it 'cannot create, update, or destroy an ingredient for a recipe it does not own' do
+        ingredient = create(:ingredient)
+        expect(subject).not_to be_able_to(:create, ingredient)
+        expect(subject).not_to be_able_to(:update, ingredient)
+        expect(subject).not_to be_able_to(:destroy, ingredient)
+      end
+
       # Recipes
       it 'can read any recipe' do
         expect(subject).to be_able_to(:read, build(:recipe))

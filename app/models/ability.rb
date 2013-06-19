@@ -14,6 +14,8 @@ class Ability
       can [:read, :create, :update], Cocktail
       can :read, Recipe
       can [:create, :update], Recipe, user_id: user.id
+      can :read, Ingredient
+      can [:create, :update, :destroy], Ingredient, recipe: { user_id: user.id }
     end
     
   end

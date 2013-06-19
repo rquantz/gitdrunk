@@ -4,6 +4,7 @@ class IngredientsController < ApplicationController
   def create
     @ingredient = Ingredient.new(ingredient_params)
     authorize! :create, @ingredient
+    @ingredient.save
     respond_with @ingredient
   end
 

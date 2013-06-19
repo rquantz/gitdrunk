@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   def handle_access_denied(ex)
     respond_to do |format|
       format.html { redirect_to root_url, alert: ex.message }
-      format.json { render json: ex.message.to_json }
+      format.json { render json: ex.message.to_json, status: :access_denied }
     end
   end
 

@@ -33,6 +33,11 @@ describe "AddIngredients", ->
       it 'sets the ingredient_spirit_id_field value', ->
         add_ingredients_view.set_spirit_id(8)
         expect(add_ingredients_view.$('.ingredient_spirit_id_field').val()).toBe('8')
+        
+      it 'enables the add button', ->
+        expect(add_ingredients_view.$('.submit_add_ingredient')).toHaveClass('disabled')
+        add_ingredients_view.set_spirit_id(8)
+        expect(add_ingredients_view.$('.submit_add_ingredient')).not.toHaveClass('disabled')
 
     describe 'recipe_id', ->
       it 'returns the recipe_id that was passed on instantiation', ->

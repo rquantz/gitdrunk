@@ -37,6 +37,7 @@
       @_ingredient_views[ingredient.cid].remove()
       delete @_ingredient_views[ingredient.cid]
     set_spirit_id: (spirit_id) ->
+      @$('.submit_add_ingredient').removeClass('disabled')
       @$('.ingredient_spirit_id_field').val(spirit_id)
     clear_form: ->
       @$('.ingredient_amount_field, .spirit_search_field, .ingredient_spirit_id_field').val('')
