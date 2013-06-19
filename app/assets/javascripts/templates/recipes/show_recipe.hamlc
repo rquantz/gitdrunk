@@ -1,4 +1,8 @@
-.well
+.well{class: "#{'in_bar' if @in_bar}"}
+  - if @in_bar
+    .in_bar_message
+      You can make this recipe
+      %i.icon-ok
   %table.list_ingredients
     - _(@ingredients).each (ingredient) ->
       %tr.show_ingredient
@@ -8,9 +12,10 @@
     = @instructions
 .tasting_notes
   = @tasting_notes
-.show_recipe_actions
-  %button.btn.edit_recipe_btn Edit
-  %button.btn.btn-danger.delete_recipe_btn Delete
+- if @user_id == current_user.id || current_user.admin
+  .show_recipe_actions
+    %button.btn.edit_recipe_btn Edit
+    %button.btn.btn-danger.delete_recipe_btn Delete
 
 %hr
 

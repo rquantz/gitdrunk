@@ -52,7 +52,9 @@ class Bar < ActiveRecord::Base
         diff = ingredient_difference(recipe)
         diff.sort!
         best_hash[diff] = [] unless best_hash.has_key? diff
-        best_hash[diff] << recipe.cocktail unless best_hash[diff].include? recipe.cocktail
+        if !(best_hash[diff].include? recipe.cocktail) && !(cocktails.include? recipe.cocktail)
+          best_hash[diff] << recipe.cocktail 
+        end
       end
       @next_recipes ||= best_hash.select {|spirits, recipes| spirits.length == 1}
     end

@@ -61,7 +61,8 @@ class CocktailsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cocktail
-      @cocktail = Cocktail.find(params[:id])
+      @cocktail = Cocktail.includes(:recipes).find(params[:id])
+      @cocktail.recipes.each {|recipe| recipe.current_user = current_user}
     end
 
     # Only allow a trusted parameter "white list" through.

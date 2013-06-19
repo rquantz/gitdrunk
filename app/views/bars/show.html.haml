@@ -20,10 +20,11 @@
       - if @bar.top_bottles.any?
         %h4 Your next bottle should be...
         - @bar.top_bottles.each do |spirits, cocktails|
-          %p= "#{spirits[0].name} will make #{pluralize(cocktails.length, 'new cocktail')}:"
-          %ul
-            - cocktails.each do |cocktail|
-              %li= link_to cocktail.name, cocktail_url(cocktail)
+          - if cocktails.any?
+            %p= "#{spirits[0].name} will make #{pluralize(cocktails.length, 'new cocktail')}:"
+            %ul
+              - cocktails.each do |cocktail|
+                %li= link_to cocktail.name, cocktail_url(cocktail)
         
 %script
   = json_safe "window.bottles = new App.Collections.Bottles(#{@bar.brand_bottles.to_json});".html_safe

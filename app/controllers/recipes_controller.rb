@@ -17,6 +17,7 @@ class RecipesController < ApplicationController
     authenticate_user!
     @recipe = Recipe.new(recipe_params)
     @recipe.user = current_user
+    @recipe.current_user = current_user
     authorize! :create, @recipe
     @recipe.save
     respond_with @recipe
@@ -39,6 +40,7 @@ class RecipesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_recipe
       @recipe = Recipe.includes(ingredients: [:spirit]).find(params[:id])
+      @recipe.current_user = current_user
     end
 
     # Only allow a trusted parameter "white list" through.

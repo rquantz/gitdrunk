@@ -3,7 +3,10 @@
   %head
     %title Cocktails
     %script
-      = "window.current_user = { id: #{current_user.id} }"
+      - if current_user
+        = "window.current_user = { id: #{current_user.id}, admin: #{current_user.admin?}, logged_in: true}"
+      - else
+        = "window.current_user = { id: false, admin: false, logged_in: false }"
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags

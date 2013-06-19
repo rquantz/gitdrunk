@@ -17,8 +17,8 @@
       %td= cocktail.name
       %td= truncate cocktail.description, length: 90
       %td= link_to 'Show', cocktail
-      %td= link_to 'Edit', edit_cocktail_path(cocktail)
-      %td= link_to 'Destroy', cocktail, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Edit', edit_cocktail_path(cocktail) if current_user
+      %td= link_to 'Destroy', cocktail, :method => :delete, :data => { :confirm => 'Are you sure?' } if current_user
 
 = will_paginate @cocktails, :renderer => BootstrapPagination::Rails
 

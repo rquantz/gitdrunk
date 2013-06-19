@@ -17,4 +17,19 @@ describe Recipe do
     recipe = create(:recipe, ingredients: ingredients)  
     expect(recipe.ingredients).to eq(recipe.ingredients.order(:recipe_order))
   end
+  
+  describe "#in_bar?" do
+    before :each do
+      @recipe = create(:recipe)
+      @bar = create(:bar)
+    end
+    it 'returns true if the current user can make the recipe' do
+      Bar.any_instance.stub(:can_make?).and_return(true)
+      expect(@recipe).to be_in_bar(@bar)
+    end
+    it 'returns false if the current user cannot make the recipe' do
+      Bar.any_instance.stub(:can_make?).and_return(false)
+      expect(@recipe).not_to be_in_bar(@bar)
+    end
+  end
 end
