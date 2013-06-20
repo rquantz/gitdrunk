@@ -22,7 +22,7 @@
         - @bar.top_bottles.each do |spirits, cocktails|
           - if cocktails.any?
             %p= "#{spirits[0].name} will make #{pluralize(cocktails.length, 'new cocktail')}:"
-            %ul
+            %ul.bar-recipes-list
               - cocktails.each do |cocktail|
                 %li= link_to cocktail.name, cocktail_url(cocktail)
         
