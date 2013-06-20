@@ -21,9 +21,12 @@
       ingredient_attributes = FormHelpers.objectize @$('.add_ingredient_form')
       ingredient = new App.Models.Ingredient(
         _(ingredient_attributes).extend(recipe_id: @recipe_id(), recipe_order: @collection.length))
-      @collection.add ingredient
-      @clear_form()
-      ingredient.save()
+      if promise = ingredient.save()
+        @collection.add ingredient
+        @clear_form()
+      else
+        #@render_errors ingredient
+      promise
     recipe_id: ->
       @options.recipe_id
     _ingredient_views: {}
@@ -40,8 +43,9 @@
       @$('.submit_add_ingredient').removeClass('disabled')
       @$('.ingredient_spirit_id_field').val(spirit_id)
     clear_form: ->
-      @$('.ingredient_amount_field, .spirit_search_field, .ingredient_spirit_id_field').val('')
+      @$('.ingredient_amount_field, .spirit_search_field, .ingredient_spirit_id_field').val(null)
       @$('.ingredient_amount_field').focus()
+      @$('.submit_add_ingredient').addClass('disabled')
     get_recipe_order: ->
       output = {}
       _(@_ingredient_views).each (view) ->

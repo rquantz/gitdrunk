@@ -47,6 +47,7 @@ describe "AddIngredients", ->
       beforeEach ->
         add_ingredients_view.$el.appendTo('body')
         add_ingredients_view.$('.spirit_search_field').val('Orange Bitters')
+        add_ingredients_view.set_spirit_id(10)
         add_ingredients_view.clear_form()
         
       afterEach ->
@@ -57,6 +58,9 @@ describe "AddIngredients", ->
         
       it 'gives the amount field focus', ->
         expect(add_ingredients_view.$('.ingredient_amount_field')).toBeFocused()
+        
+      it 'adds the disabled class to the submit button', ->
+        expect(add_ingredients_view.$('.submit_add_ingredient')).toHaveClass('disabled')
 
 
     describe 'add', ->
@@ -104,6 +108,14 @@ describe "AddIngredients", ->
         spyOn(add_ingredients_view, 'add')
         add_ingredients_view.$('.add_ingredient_form').trigger('submit')
         expect(add_ingredients_view.add).toHaveBeenCalled()
+        
+      it 'does not add the ingredient if the ingredient is invalid', ->
+        add_ingredients_view.clear_form()
+        ingredients_count = add_ingredients_view.collection.length
+        add_ingredients_view.$('.add_ingredient_form').trigger('submit')
+        expect(add_ingredients_view.collection.length).toEqual(ingredients_count)
+        
+        
         
     describe 'get_recipe_order', ->
       beforeEach ->
