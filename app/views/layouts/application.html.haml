@@ -35,4 +35,9 @@
                 %li= link_to 'Sign in', new_user_session_url
   
     .container
+      - if notice
+        %p#notice.alert.alert-info= notice
+      - if alert
+        %p#alert.alert.alert-error= alert
+        
       = yield
