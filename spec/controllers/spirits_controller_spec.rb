@@ -42,6 +42,13 @@ describe SpiritsController do
       get :index
       expect(response).to render_template :index
     end
+    context 'when brand_only is true' do
+      it 'gets only the brand spirits' do
+        create(:child_spirit)
+        get :index, brand_only: 'true'
+        expect(assigns(:spirits)).to eq(Spirit.brand_only)
+      end
+    end
   end
   
   describe 'GET #show' do

@@ -3,7 +3,11 @@ class SpiritsController < ApplicationController
   respond_to :html, :json
   
   def index
-    @spirits = Spirit.all
+    if params[:brand_only] == 'true'
+      @spirits = Spirit.brand_only
+    else
+      @spirits = Spirit.all
+    end
     respond_with(@spirits)
   end
   
@@ -53,7 +57,6 @@ class SpiritsController < ApplicationController
   end
   
   def search
-    puts params[:brand_only]
     if params[:brand_only] == "true"
       
       @spirits = Spirit.search params[:search], with: { is_brand: true }

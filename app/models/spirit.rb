@@ -7,7 +7,19 @@ class Spirit < ActiveRecord::Base
 
   validates :name, presence: true
   
+  def self.brand_only
+    where(is_brand: true)
+  end
+
   def in_category?(spirit)
     ancestors.include? spirit
+  end
+  
+  def root_name
+    root.name unless root?
+  end
+  
+  def as_json(opts={})
+    super(opts.merge(methods: [:root_name]))
   end
 end
