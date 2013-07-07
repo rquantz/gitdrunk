@@ -1,0 +1,17 @@
+.modal-header 
+  %button.close{'data-dismiss': 'modal', 'aria-hidden': 'true'} &times;
+  %h3 Select Spirits
+.modal-body
+  %form.select_spirits_form
+    %dl
+      - _(@).chain().keys().sortBy((k) -> k).each (category) =>
+        %dt.select_spirits_category= category
+        - _(@[category]).each (spirit) ->
+          %dd
+            %label.checkbox
+              %input{type: 'checkbox', 'data-spirit-id': spirit.id, 'data-spirit-name': spirit.get('name'), 'data-spirit-root': category}
+              = spirit.get('name')
+.modal-footer
+  .select_spirits_actions
+    %button.btn.cancel_select_spirits{'data-dismiss': 'modal'} Cancel
+    %button.btn.btn-primary.save_select_spirits Save

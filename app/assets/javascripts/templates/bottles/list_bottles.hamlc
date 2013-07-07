@@ -1,6 +1,6 @@
-- for category, bottles of @categories()
+- _(@categories()).chain().keys().sortBy((k) -> k).each (category) =>
   %dt= category
-  - for bottle in bottles
+  - for bottle in _(@categories()[category]).sortBy((b) -> b.get('spirit_name'))
     %dd.list_bottles_bottle
       = bottle.get('spirit_name')
       %a.list_bottles_destroy.text-error{href: '#', 'data-bottle-id': bottle.id} remove

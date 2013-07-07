@@ -2,6 +2,8 @@
   .span7
     .bar-spirits-list
       .js-add_bottles_container
+      %p
+        = link_to 'Browse spirits', '#select_spirits_modal', 'data-toggle' => 'modal', role: 'button'
       %h3 Spirits you own
       .js-list_bottles_container
   .span5
@@ -26,7 +28,10 @@
               - cocktails.each do |cocktail|
                 %li= link_to cocktail.name, cocktail_url(cocktail)
         
+.js-select_spirits_container
+
 %script
   = json_safe "window.bottles = new App.Collections.Bottles(#{@bar.brand_bottles.to_json});".html_safe
   new App.Views.ListBottles({collection: bottles}).$el.appendTo('.js-list_bottles_container');
   new App.Views.AddBottles({collection: bottles}).$el.appendTo('.js-add_bottles_container');
+  new App.Views.SelectSpirits({collection: new App.Collections.Spirits, bottles: bottles}).$el.appendTo('.js-select_spirits_container');

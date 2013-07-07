@@ -54,7 +54,7 @@ class CocktailsController < ApplicationController
   
   def search
     authorize! :read, Cocktail
-    @cocktails = Cocktail.search(params[:q])
+    @cocktails = Cocktail.search(params[:q], page: params[:page])
     render :index
   end
 
