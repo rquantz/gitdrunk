@@ -26,4 +26,21 @@ describe Ingredient do
     ingredient = create(:ingredient, spirit: spirit)
     expect(ingredient.to_json).to include(ingredient.spirit_name)
   end
+  
+  describe 'sub_spirit' do
+    before :each do
+      @ingredient = create(:ingredient)
+      @new_spirit = create(:spirit)
+    end
+    it 'switches which spirit is used in all ingredients using a particular spirit' do
+      Ingredient.sub_spirit(@ingredient.spirit_id, @new_spirit.id)
+      expect(@ingredient.reload.spirit).to eq(@new_spirit)
+    end
+    it 'does not affect other ingredients' do
+      other_spirit = create(:spirit)
+      other_ingredient = create(:ingredient, spirit: other_spirit)
+      Ingredient.sub_spirit(@ingredient.spirit_id, @new_spirit.id)
+      expect(other_ingredient.reload.spirit).to eq(other_spirit)
+    end
+  end
 end
