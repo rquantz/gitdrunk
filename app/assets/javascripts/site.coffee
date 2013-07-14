@@ -11,6 +11,7 @@
       #{spirit['name']}
       | <a href='/spirits/#{spirit['id']}/edit'>Edit</a>
       | <a data-confirm='Are you sure you want to permanently delete #{spirit['name']}' data-method='delete' href='http://localhost:3000/spirits/#{spirit['id']}' rel='nofollow'>Destroy</a>
+      | <a href='/spirits/#{spirit['id']}'>View</a>
       </li>")
       
   render_spirit_form = (parent_id='') ->

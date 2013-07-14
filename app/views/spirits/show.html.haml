@@ -1,0 +1,3 @@
+%h1= @spirit.name
+%ul.nested-spirits.children-of-spirit-
+  = nested_spirits @spirit.subtree.arrange(order: :name)
