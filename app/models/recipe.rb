@@ -9,7 +9,7 @@ class Recipe < ActiveRecord::Base
   validates :cocktail, presence: true
   
   def ingredients
-    super.order(:recipe_order)
+    super.order(:recipe_order, :created_at)
   end
   
   def in_bar(bar=nil)
