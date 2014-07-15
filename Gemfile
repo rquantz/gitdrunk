@@ -5,7 +5,7 @@ ruby "2.0.0"
 gem 'rails', '4.0.0.rc1'
 
 # Use sqlite3 as the database for Active Record
-gem 'pg'
+gem 'pg', '~> 0.17'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc1'
@@ -43,6 +43,10 @@ end
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'poltergeist'
+  gem 'database_cleaner'
+
 end
 
 group :production do
